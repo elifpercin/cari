@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block icerik %}
+    <div class="row">
+        <div style="margin: 0 auto; width : 400px ">
+            <h2 class="page-header"> Ödeme Ekranı </h2>
+            <form action="" method="post" >
+                 {% csrf_token %}
+                {{ odemeformu.as_p }}
+                <input type="submit" value="kaydet">
+
+            </form>
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ust_baslik %}
+    Ogrencıler
+{% endblock %}
+
+
+{% block icerik %}
+
+    <div class="col-lg-7 col-lg-offset-3">
+
+   {% for post in post_list %}
+
+        <h2><a href="{% url 'hesap:post_detail' post.pk %} " >{{ post.title }}</a>
+        <small> {{ post.created_date | timesince }}</small>
+         </h2>
+
+    <br>
+
+
+        <p> {{post.ders}} </p>
+       <form action="{% url 'hesap:post_delete' post.pk %}"></form>
+       <input type="hidden" value="{{ post.id }}">
+    <hr>
+
+
+   {% endfor %}
+
+    {% if post_list.has_other_pages %}
+        <ul class="pagination">
+          {% if post_list.has_previous %}
+              <li><a href="?page={{ post_list.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+              <li class="disabled"><span>&laquo;</span></li>
+
+          {% endif %}
+          {% for i in post_list.paginator.page_range  %}
+              {% if post_list.number == i %}
+                  <li class="active"><span>{{ i }}<span class="sr-only">(current)</span></span> </li>
+              {% else %}
+                  <li><a href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+
+          {% endfor %}
+          {% if post_list.has_next %}
+              <li><a href="?page={{ post_list.next_page_number }}" >&raquo;</a></li>
+          {% else %}
+              <li class="disabled"><span>&raquo;</span></li>
+
+          {% endif %}
+
+        </ul>
+    {% endif %}
+
+
+
+{% endblock %}
+

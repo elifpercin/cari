@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block icerik %}
+<div class="row">
+<div style="margin: 0 auto; width : 400px ">
+<h2 class="page-header"> Randevu Oluştur </h2>
+{%  if form.errors %}
+{{ form.errors }}
+{% endif %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-3"> </div>
+    </div>
+ {% include 'form_template.html' %}
+    </div>
+
+{% endblock %}
+
+
+
+

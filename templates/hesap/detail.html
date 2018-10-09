@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load hesap_tags %}
+{% block icerik %}
+    <div class="col-lg-6 col-lg-offset-3">
+        <div><a href="{% url 'hesap:post_list' %}"> Öğrenciler </a></div>
+        <h2 class="page-header">{{ post.title }}
+            <small> {{ post.created_date | timesince }}</small>
+        </h2>
+        <p> {{ post.ders }}</p>
+        <br>
+        <a class="btn btn-info" href="{% url 'hesap:post_update' post.pk %}">Güncelle</a>
+        <p> Yenilenme Tarihi : {{ post.updated_date | timesince }}</p>
+        <br>
+
+        <a class="btn btn-danger" href="{% url 'hesap:post_delete' post.pk %}">Sil</a>
+
+       <h2>
+    <div class="row">
+        {% for same_post in posts %}
+            {{ same_post.title }}
+            {{ same_post.ders }}
+            {{ same_post.Tarih }}
+            {{ same_post|get_ucret}}
+          <br>
+        {% endfor %}
+    <br>
+
+        <p>Toplam Borç Tutarı: {{ data }}</p>
+
+        <a class="btn btn-info" href="{% url 'hesap:odeme_al' post.pk %}">Ödeme Al</a>
+
+
+    </div>
+       </h2>
+
+    </div>
+{% endblock %}

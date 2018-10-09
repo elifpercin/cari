@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <form action="",method="post">
+     {% csrf_token %}
+     <h2>
+         ulaşmak istediğiniz sayfayı giriniz
+     </h2>
+     <input type="text" name="mesaj">
+     <input type="submit" value="gonder">
+ </form>
+{% if gelen_mesaj %}
+<h2> mesaj </h2>
+<p>
+{{ gelen_mesaj }}</p>
+{% endif %}
+</body>
+</html>

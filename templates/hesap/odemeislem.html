@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block icerik %}
+    <h2 class="page-header"> FATURA İŞLEM </h2>
+<p>Borç Ödeme Tutarı = {{ odeme }} </p>
+<p>Toplam Borç Tutarı = {{ data }}</p>
+<p>Kalan Borç = {{ islem }}</p>
+{% endblock %}
